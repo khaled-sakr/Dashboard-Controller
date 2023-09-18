@@ -4,6 +4,20 @@
 
 @layer components {
   .shad {
-    box-shadow: rgb(53, 52, 41) 0px 10px 10px;
+    box-shadow: rgb(53, 52, 41) 10px 10px 10px;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    transform: translateX(0);
+    transition: all 0.2s;
+  }
+  .hiddenForm {
+    transform: translateX(100%);
   }
 }

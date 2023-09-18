@@ -3,31 +3,41 @@ import Button from "./Button";
 function Sidebar() {
   const { pathname } = useLocation();
   return (
-    <div className="md:col-span-2  col-span-3 row-span-1  md:text-base text-xs text-center p-1 sm:text-sm bg-vanilla-600 ">
-      <ul className="pages">
+    <div className="md:col-span-2 col-span-3 row-span-1 md:text-base text-xs text-center p-1 sm:text-sm bg-vanilla-600 ">
+      <ul>
         <li>
           <Link to="/">
             <img
               src="public\images\photo_2023-09-15_15-43-25.jpg"
               alt="vanilla.jpg"
-              className="rounded-full max-w-full  sm:block hidden  pl-0 sm:pl-auto after:rounded-full"
+              className="rounded-full max-w-full   pl-0 sm:pl-auto after:rounded-full"
             />
           </Link>
         </li>
 
         <li>
           <Link to="/">
-            <Button child="Dashboard" select={pathname === "/"} />
+            <Button type="normal" select={pathname === "/"}>
+              Dashboard
+            </Button>
           </Link>
         </li>
         <li>
           <Link to="/employees">
-            <Button child="Employees" select={pathname === "/employees"} />
+            <Button type="normal" select={pathname === "/employees"}>
+              Employees
+            </Button>
           </Link>
         </li>
         <li>
           <Link to="/incomes">
-            <Button child="Incomes" select={pathname === "/incomes"} />
+            <Button
+              children="Incomes"
+              type="normal"
+              select={pathname === "/incomes"}
+            >
+              Incomes
+            </Button>
           </Link>
         </li>
       </ul>
