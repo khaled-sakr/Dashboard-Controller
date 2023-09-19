@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Loader from "./Loader";
 const styleInput =
   " w-[90%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-1 xs:py-2 outline-none ";
 const label =

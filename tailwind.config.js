@@ -17,11 +17,14 @@ export default {
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
 
-      xl: "1280px",
+      xl: "1210px",
       // => @media (min-width: 1280px) { ... }
-
-      "2xl": "1536px",
+      "2xl": "1340px",
       // => @media (min-width: 1536px) { ... }
+      "3xl": "1480px",
+      // => @media (min-width: 1580px) { ... }
+      "4xl": "1580px",
+      // => @media (min-width: 1580px) { ... }
     },
     extend: {
       colors: {

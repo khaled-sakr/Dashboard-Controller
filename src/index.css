@@ -4,7 +4,7 @@
 
 @layer components {
   .shad {
-    box-shadow: rgb(53, 52, 41) 10px 10px 10px;
+    box-shadow: rgb(53, 52, 41) 20px 20px 20px;
   }
   .overlay {
     position: fixed;
@@ -19,5 +19,12 @@
   }
   .hiddenForm {
     transform: translateX(100%);
+  }
+  .cols4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  }
+  .scroll::-webkit-scrollbar {
+    display: none;
   }
 }

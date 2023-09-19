@@ -3,7 +3,7 @@ import Button from "./Button";
 const styleInput =
   " w-[90%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-2 outline-none ";
 const label =
-  "  mr-7 w-[30%] md:text-lg text-normal sm:text-base md:font-bold font-base xs:font-semibold  mb-2 xs:mb-0";
+  "  mr-7 2xl:w-[20%] w-[10%] md:text-lg text-normal sm:text-base md:font-bold font-base xs:font-semibold  mb-2 xs:mb-0";
 
 //  xs:w-[20%] w-[25%]
 

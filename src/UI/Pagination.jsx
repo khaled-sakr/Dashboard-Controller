@@ -2,7 +2,7 @@ import Button from "./Button";
 
 function Pagination() {
   return (
-    <div className="sm:text-xl text-xs float-left sm:ml-32 ml-20 sm:mt-20 mt-10 ">
+    <div className="md:text-xl text-xs float-left sm:ml-32 xs:ml-20 ml-10 md:mt-20 mt-10 ">
       <Button type="pag" nextPage="1">
         &larr;
       </Button>

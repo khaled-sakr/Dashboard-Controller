@@ -3,7 +3,7 @@ import Button from "./Button";
 function Sidebar() {
   const { pathname } = useLocation();
   return (
-    <div className="md:col-span-2 col-span-3 row-span-1 md:text-base text-xs text-center p-1 sm:text-sm bg-vanilla-600 ">
+    <div className="md:col-span-2 col-span-3 row-span-1 lg:text-lg md:text-base text-xs text-center p-1 sm:text-sm bg-vanilla-600 ">
       <ul>
         <li>
           <Link to="/">
@@ -18,7 +18,7 @@ function Sidebar() {
         <li>
           <Link to="/">
             <Button type="normal" select={pathname === "/"}>
-              Dashboard
+              Home
             </Button>
           </Link>
         </li>
