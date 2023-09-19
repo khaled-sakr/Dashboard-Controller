@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Button from "../UI/Button";
-import Employee from "../UI/Employee";
 import Sort from "../UI/Sort";
 import Filter from "../UI/Filter";
 import Modal from "../UI/Modal";
 import Pagination from "../UI/Pagination";
+import TableEmp from "../UI/TableEmp";
 function Employees() {
   const [openedModal, setOpenedModal] = useState(false);
   return (
@@ -26,10 +26,7 @@ function Employees() {
         <span className="col-span-2 border-r border-vanilla-400">Salary</span>
         <span className="col-span-2 ">Phone</span>
       </div>
-      <div className="text-center mx-4 mt-6 md:mt-20 md:text-xl text-[8px] xs:text-[10px] sm:text-sm font-normal sm:font-semibold text-stone-600">
-        <Employee />
-        <Employee />
-      </div>
+      <TableEmp />
       <div className="mr-6">
         <Button onOpenedModal={() => setOpenedModal(true)} type="add">
           Add Employee

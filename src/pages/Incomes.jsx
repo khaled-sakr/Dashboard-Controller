@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Button from "../UI/Button";
-import Deal from "../UI/Deal";
 import Modal2 from "../UI/Modal2";
 import Sort from "../UI/Sort";
 import Filter from "../UI/Filter";
 import Pagination from "../UI/Pagination";
+import TableDeal from "../UI/TableDeal";
 
 function Incomes() {
   const [openedModal2, setOpenedModal2] = useState(false);
@@ -26,11 +26,7 @@ function Incomes() {
         <span className="col-span-2 border-r border-vanilla-400">benefit</span>
         <span className="col-span-2 ">Phone</span>
       </div>
-      <div className="text-center mx-4 md:mt-20 -mt-10 md:text-xl text-[8px] xs:text-[10px] sm:text-sm font-normal sm:font-semibold text-stone-600">
-        <Deal />
-        <Deal />
-        <Deal />
-      </div>
+      <TableDeal />
       <div className="mr-6">
         <Button onOpenedModal2={() => setOpenedModal2(true)} type="add">
           Add Deal

@@ -1,5 +1,20 @@
+import { ThreeDots } from "react-loader-spinner";
+
 function Loader() {
-  return <div className="overlay">loading...</div>;
+  return (
+    <div className="m-auto pt-20 w-fit p-20 h-fit">
+      <ThreeDots
+        height="70"
+        width="70"
+        radius="9"
+        color="#796938"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    </div>
+  );
 }
 
 export default Loader;

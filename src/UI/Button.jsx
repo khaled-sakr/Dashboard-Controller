@@ -31,7 +31,6 @@ function Button({
     nextPage && nextPage();
     prevPage && prevPage();
   }
-  console.log(addStyle);
   return (
     <button
       onClick={Click}
@@ -45,6 +44,3 @@ function Button({
 }
 
 export default Button;
-
-// const page =
-//   " active:after:absolute active:after after:bg-vanilla-200 after:text-vanilla-100 md:after:w-[28px] after:w-5 md:after:h-[72px]  sm:after:after:h-[64px] md:after:-right-3 after:-right-[6px] after:-top-0";
