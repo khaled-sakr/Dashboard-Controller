@@ -11,7 +11,6 @@ const container = " flex flex-col xs:flex-row  space-y-0 text-stone-800";
 
 function Modal2({ setOpenedModal2, openedModal2 }) {
   const [ddd, setDdd] = useState("");
-  console.log(ddd);
   return (
     <div className={`overlay ${!openedModal2 && "hiddenForm"}`}>
       <div className="sm:w-[90%] smd:w-[50%] w-[100%]  bg-vanilla-500 opacity-95 rounded-3xl p-16 h-fit mx-auto xs:mt-12 mt-2 ">
@@ -19,7 +18,7 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
           <Button
             type="danger"
             addStyle=" -mt-5 -mr-4 "
-            onClosedModal2={() => setOpenedModal2(() => false)}
+            onClick={() => setOpenedModal2(() => false)}
           >
             X
           </Button>
@@ -74,7 +73,7 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
           <Button
             addStyle="hidden sm:block"
             type="danger"
-            onClosedModal2={() => setOpenedModal2(false)}
+            onClick={() => setOpenedModal2(false)}
           >
             Cancle
           </Button>

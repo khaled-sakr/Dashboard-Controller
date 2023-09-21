@@ -4,7 +4,7 @@
 
 @layer components {
   .shad {
-    box-shadow: rgb(53, 52, 41) 20px 20px 20px;
+    box-shadow: rgb(53, 52, 41) 5px -3px 5px;
   }
   .overlay {
     position: fixed;

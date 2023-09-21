@@ -11,7 +11,7 @@ function Modal({ setOpenedModal, openedModal }) {
     <div className={`overlay ${!openedModal && "hiddenForm"}`}>
       <div className="sm:w-[90%] md:w-[50%] w-[100%] bg-vanilla-500 opacity-95 rounded-3xl p-16 h-fit mx-auto mt-12 ">
         <Button
-          onClosedModal={() => setOpenedModal(() => false)}
+          onClick={() => setOpenedModal(() => false)}
           type="danger"
           addStyle=" -mt-5 -mr-4 "
         >
@@ -72,7 +72,7 @@ function Modal({ setOpenedModal, openedModal }) {
           <Button
             addStyle="hidden sm:block"
             type="danger"
-            onClosedModal={() => setOpenedModal(false)}
+            onClick={() => setOpenedModal(false)}
           >
             Cancle
           </Button>

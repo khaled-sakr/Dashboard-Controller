@@ -28,7 +28,7 @@ function Employees() {
       </div>
       <TableEmp />
       <div className="mr-6">
-        <Button onOpenedModal={() => setOpenedModal(true)} type="add">
+        <Button onClick={() => setOpenedModal(true)} type="add">
           Add Employee
         </Button>
         <Pagination />

@@ -18,7 +18,7 @@ const data = [
 
 function Graph() {
   return (
-    <div className="w-8/12 m-auto sm:mr-auto  mb-6 h-[370px] bg-vanilla-300 to-vanilla-800 rounded-3xl py-16 px-4 scroll overflow-scroll ">
+    <div className=" shad w-8/12 m-auto sm:mr-auto  mb-6 h-[370px] bg-vanilla-300 to-vanilla-800 rounded-3xl py-16 px-4 scroll overflow-scroll ">
       <LineChart width={900} height={300} data={data}>
         <Line type="monotone" dataKey="tail" stroke="#720808" strokeWidth={3} />
         <Line

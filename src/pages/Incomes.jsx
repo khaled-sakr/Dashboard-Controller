@@ -28,7 +28,7 @@ function Incomes() {
       </div>
       <TableDeal />
       <div className="mr-6">
-        <Button onOpenedModal2={() => setOpenedModal2(true)} type="add">
+        <Button onClick={() => setOpenedModal2(true)} type="add">
           Add Deal
         </Button>
         <Pagination />

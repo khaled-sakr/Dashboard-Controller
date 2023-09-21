@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
-import { useEmployees } from "../data/getEmployees";
-import { findAll } from "../services/apiEmployees";
 import Employee from "../UI/Employee";
-import Empty from "./Empty";
 import Loader from "./Loader";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+
+import Empty from "./Empty";
+import { useLoadError } from "../context/LoadingErrorCon";
+import ErrorFetch from "./ErrorFetch";
+import { useEffect } from "react";
+import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../services/firebase";
-import { useQuery } from "@tanstack/react-query";
 
 function TableEmp() {
-  const [employees, setEmployees] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    isLoading,
+    setIsLoading,
+    checkLine,
+    isError,
+    data: employees,
+    setdata,
+  } = useLoadError();
+  //
   useEffect(() => {
     const q = query(collection(db, "employees"));
     setIsLoading(true);
@@ -19,16 +26,14 @@ function TableEmp() {
       QuerySnapshot.forEach((doc) => {
         data.push({ ...doc.data(), id: doc.id });
       });
-      setEmployees(data);
+      setdata(data);
       setIsLoading(false);
     });
-  }, []);
-  console.log(employees);
-  // const { data: employees } = useQuery("data", () => {});
-
+  }, [setIsLoading, setdata]);
+  checkLine();
   if (isLoading) return <Loader />;
-  // if (error) console.error(error);
-  // if (employees.length === 0) return <Empty item="employee" />;
+  if (isError) return <ErrorFetch />;
+  if (employees.length === 0) return <Empty item="employee" />;
 
   return (
     <div className="text-center mx-4 mt-6 md:mt-20 md:text-xl text-[8px] xs:text-[10px] sm:text-sm font-normal sm:font-semibold text-stone-600">
