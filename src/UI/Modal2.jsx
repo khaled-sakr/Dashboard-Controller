@@ -1,75 +1,114 @@
 import { useState } from "react";
 import Button from "./Button";
+import { useOutsideClick } from "../context/OutSideClick";
+import { useForm } from "react-hook-form";
+import ErrorInput from "./ErrorInput";
 const styleInput =
-  " w-[90%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-2 outline-none ";
+  " w-[75%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-1 xs:py-2 outline-none ";
 const label =
-  "  mr-7 2xl:w-[20%] w-[10%] md:text-lg text-normal sm:text-base md:font-bold font-base xs:font-semibold  mb-2 xs:mb-0";
-
-//  xs:w-[20%] w-[25%]
-
-const container = " flex flex-col xs:flex-row  space-y-0 text-stone-800";
-
+  " xs:w-[20%] w-[25%]  md:text-lg text-sm sm:text-base md:font-bold font-base xs:font-semibold mb-1 xs:mb-0";
+const container = " flex flex-col sm:flex-row space-y-0 text-stone-800";
 function Modal2({ setOpenedModal2, openedModal2 }) {
-  const [ddd, setDdd] = useState("");
+  const ref = useOutsideClick(() => setOpenedModal2(false));
+  // const [ddd, setDdd] = useState("");
+  const { register, formState, handleSubmit } = useForm();
+  const { errors } = formState;
+
+  function onSubmit(data) {
+    console.log(data);
+    setOpenedModal2(false);
+  }
   return (
-    <div className={`overlay ${!openedModal2 && "hiddenForm"}`}>
-      <div className="sm:w-[90%] smd:w-[50%] w-[100%]  bg-vanilla-500 opacity-95 rounded-3xl p-16 h-fit mx-auto xs:mt-12 mt-2 ">
+    <div
+      onSubmit={handleSubmit(onSubmit)}
+      className={`overlay overflow-scroll scroll`}
+    >
+      <div
+        ref={ref}
+        className="lg:w-[60%] w-[80%] bg-vanilla-500 opacity-95 rounded-3xl p-16 h-fit mx-auto mt-12 "
+      >
         <div className="pb-9">
           <Button
             type="danger"
             addStyle=" -mt-5 -mr-4 "
-            onClick={() => setOpenedModal2(() => false)}
+            onClick={() => setOpenedModal2(false)}
           >
             X
           </Button>
         </div>
-        <div className="flex flex-col gap-10 my-16 sm:font-semibold  font-normal justify-center ">
+        <div className="flex flex-col gap-10 my-16 justify-center ">
           <div className={container}>
             <label className={label}>Company</label>
 
             <input
               type="text"
               className={`${styleInput}`}
-              placeholder={`Please Enter Your Company...`}
+              placeholder={`please enter your company...`}
+              {...register("company", { required: "the company is required" })}
             />
+            <ErrorInput message={errors?.company?.message} />
           </div>
           <div className={container}>
             <label className={label}>Dealer</label>
 
             <input
               type="text"
-              placeholder={`Please Enter Your Dealer..`}
+              placeholder={`please enter your dealer...`}
               className={styleInput}
+              {...register("dealer", {
+                required: "the dealer is required",
+              })}
             />
+            <ErrorInput message={errors?.dealer?.message} />
           </div>
           <div className={container}>
             <label className={label}>Package</label>
             <input
               className={styleInput}
-              type="text"
-              placeholder={`Please Enter Your Work  Package...`}
+              type="number"
+              placeholder={`please enter your package...`}
+              {...register("package", { required: "the package is required" })}
             />
+            <ErrorInput message={errors?.package?.message} />
           </div>
           <div className={container}>
-            <label className={label}>Revenues</label>
+            <label className={label}>Benefit</label>
             <input
               className={styleInput}
-              type="text"
-              placeholder={`Please Enter Your Revenues...`}
+              type="number"
+              placeholder={`please enter your benefit...`}
+              {...register("benefit", {
+                required: "the benefit is required",
+              })}
             />
+            <ErrorInput message={errors?.benefit?.message} />
+          </div>
+          <div className={container}>
+            <label className={label}>Phone</label>
+            <input
+              className={styleInput}
+              type="number"
+              placeholder="please enter your phone..."
+              {...register("phone", {
+                required: "the phone is required",
+              })}
+            />
+            <ErrorInput message={errors?.phone?.message} />
           </div>
           <div className={container}>
             <label className={label}>Date</label>
             <input
               className={styleInput}
               type="date"
-              value={ddd}
-              onChange={(e) => setDdd(e.target.value)}
+              {...register("date", { required: "the date is required" })}
             />
+            <ErrorInput message={errors?.date?.message} />
           </div>
         </div>
         <div className="py-5">
-          <Button type="add">Add</Button>
+          <Button type="add" onClick={handleSubmit(onSubmit)}>
+            add
+          </Button>
           <Button
             addStyle="hidden sm:block"
             type="danger"

@@ -1,7 +1,7 @@
 import Deal from "./Deal";
 import Empty from "./Empty";
 import Loader from "./Loader";
-import { useLoadError } from "../context/LoadingErrorCon";
+import { useConFast } from "../context/ContextProject";
 import ErrorFetch from "./ErrorFetch";
 import { useEffect } from "react";
 import { collection, onSnapshot, query } from "firebase/firestore";
@@ -11,11 +11,11 @@ function TableDeal() {
   const {
     isLoading,
     setIsLoading,
-    checkLine,
+    setIsError,
     isError,
     data: deal,
     setdata,
-  } = useLoadError();
+  } = useConFast();
   //
   useEffect(() => {
     const q = query(collection(db, "incomes"));
@@ -28,10 +28,14 @@ function TableDeal() {
       setdata(data);
       setIsLoading(false);
     });
-  }, [setIsLoading, setdata]);
+    if (navigator.onLine) {
+      setIsError(false);
+      // console.log(window.width());
+    } else {
+      setIsError(true);
+    }
+  }, [setIsLoading, setdata, setIsError]);
 
-  //
-  checkLine();
   if (isLoading) return <Loader />;
   if (isError) return <ErrorFetch />;
   if (deal.length === 0) return <Empty item="deal" />;

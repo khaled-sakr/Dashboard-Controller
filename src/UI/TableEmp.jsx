@@ -2,21 +2,21 @@ import Employee from "../UI/Employee";
 import Loader from "./Loader";
 
 import Empty from "./Empty";
-import { useLoadError } from "../context/LoadingErrorCon";
 import ErrorFetch from "./ErrorFetch";
 import { useEffect } from "react";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../services/firebase";
+import { useConFast } from "../context/ContextProject";
 
 function TableEmp() {
   const {
     isLoading,
     setIsLoading,
-    checkLine,
     isError,
     data: employees,
     setdata,
-  } = useLoadError();
+    setIsError,
+  } = useConFast();
   //
   useEffect(() => {
     const q = query(collection(db, "employees"));
@@ -29,8 +29,13 @@ function TableEmp() {
       setdata(data);
       setIsLoading(false);
     });
-  }, [setIsLoading, setdata]);
-  checkLine();
+    if (navigator.onLine) {
+      setIsError(false);
+    } else {
+      setIsError(true);
+    }
+  }, [setIsLoading, setdata, setIsError]);
+
   if (isLoading) return <Loader />;
   if (isError) return <ErrorFetch />;
   if (employees.length === 0) return <Empty item="employee" />;

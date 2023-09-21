@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { useConFast } from "../context/ContextProject";
+import { useOutsideClick } from "../context/OutSideClick";
 
-function ThreeDot() {
+function ThreeDot({ id, type }) {
   const [openOption, setOpenOption] = useState(false);
+  const { deleteItem } = useConFast();
+  const ref = useOutsideClick(() => setOpenOption(false));
   return (
-    <span>
+    <span ref={ref}>
       <button
         className="cursor-pointer"
-        onClick={() => setOpenOption(!openOption)}
+        onClick={() => {
+          setOpenOption(!openOption);
+        }}
       >
         •••
       </button>
@@ -15,7 +21,13 @@ function ThreeDot() {
           <button className="block m-auto hover:bg-vanilla-400 sm:w-40 w-20 ">
             edit
           </button>
-          <button className="block m-auto hover:bg-vanilla-400 sm:w-40 w-20 ">
+          <button
+            onClick={() => {
+              deleteItem(type, id);
+              setOpenOption(false);
+            }}
+            className="block m-auto hover:bg-vanilla-400 sm:w-40 w-20 "
+          >
             delete
           </button>
         </div>

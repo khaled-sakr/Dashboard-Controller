@@ -6,7 +6,7 @@ import Employees from "./pages/Employees";
 import AppLayout from "./UI/AppLayout";
 import Error from "./Ui/Error";
 import Incomes from "./pages/Incomes";
-import { LoadingErrorCon } from "./context/LoadingErrorCon";
+import { ContextProject } from "./context/ContextProject";
 function App() {
   const router = createBrowserRouter([
     {
@@ -21,11 +21,11 @@ function App() {
   ]);
 
   return (
-    <LoadingErrorCon>
+    <ContextProject>
       <React.StrictMode>
         <RouterProvider router={router} />
       </React.StrictMode>
-    </LoadingErrorCon>
+    </ContextProject>
   );
 }
 

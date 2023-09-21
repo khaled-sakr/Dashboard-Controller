@@ -13,7 +13,9 @@ function Incomes() {
       <Sort withData="1" addStyle="sm:px-9 px-3 xs:text-xs text-center" />
       <Filter withData="1" addStyle="sm:px-9 px-3 " />
 
-      <Modal2 setOpenedModal2={setOpenedModal2} openedModal2={openedModal2} />
+      {openedModal2 && (
+        <Modal2 setOpenedModal2={setOpenedModal2} openedModal2={openedModal2} />
+      )}
 
       <div className="grid grid-cols-13 text-center mx-4 my-20 xs:text-sm md:text-2xl text-[9px] sm:text-base  font-normal sm:font-semibold text-vanilla-700 ">
         <span className="col-span-2 border-r border-vanilla-400">Company</span>
