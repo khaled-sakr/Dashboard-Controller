@@ -1,17 +1,17 @@
-import { useState } from "react";
 import Button from "../UI/Button";
 import Modal2 from "../UI/Modal2";
 import Sort from "../UI/Sort";
 import Filter from "../UI/Filter";
 import Pagination from "../UI/Pagination";
 import TableDeal from "../UI/TableDeal";
+import { useConFast } from "../context/ContextProject";
 
 function Incomes() {
-  const [openedModal2, setOpenedModal2] = useState(false);
+  const { openedModal2, setOpenedModal2, setCurrentData } = useConFast();
   return (
     <>
-      <Sort withData="1" addStyle="sm:px-9 px-3 xs:text-xs text-center" />
-      <Filter withData="1" addStyle="sm:px-9 px-3 " />
+      <Sort withData="incomes" addStyle="sm:px-9 px-3 xs:text-xs text-center" />
+      <Filter withData="incomes" addStyle="sm:px-9 px-3 " />
 
       {openedModal2 && (
         <Modal2 setOpenedModal2={setOpenedModal2} openedModal2={openedModal2} />
@@ -28,9 +28,15 @@ function Incomes() {
         <span className="col-span-2 border-r border-vanilla-400">benefit</span>
         <span className="col-span-2 ">Phone</span>
       </div>
-      <TableDeal />
+      <TableDeal type="incomes" />
       <div className="mr-6">
-        <Button onClick={() => setOpenedModal2(true)} type="add">
+        <Button
+          onClick={() => {
+            setOpenedModal2(true);
+            setCurrentData([]);
+          }}
+          type="add"
+        >
           Add Deal
         </Button>
         <Pagination />

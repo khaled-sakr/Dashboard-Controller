@@ -1,16 +1,16 @@
-import { useState } from "react";
 import Button from "../UI/Button";
 import Sort from "../UI/Sort";
 import Filter from "../UI/Filter";
 import Modal from "../UI/Modal";
 import Pagination from "../UI/Pagination";
 import TableEmp from "../UI/TableEmp";
+import { useConFast } from "../context/ContextProject";
 function Employees() {
-  const [openedModal, setOpenedModal] = useState(false);
+  const { openedModal, setOpenedModal, setCurrentData } = useConFast();
   return (
     <>
-      <Sort addStyle="sm:px-2 px-0" />
-      <Filter addStyle="sm:px-2 px-0" />
+      <Sort withData="employees" />
+      <Filter withData="employees" addStyle="sm:px-9 px-0" />
 
       {openedModal && (
         <Modal setOpenedModal={setOpenedModal} openedModal={openedModal} />
@@ -28,9 +28,15 @@ function Employees() {
         <span className="col-span-2 border-r border-vanilla-400">Salary</span>
         <span className="col-span-2 ">Phone</span>
       </div>
-      <TableEmp />
+      <TableEmp type="employees" />
       <div className="mr-6">
-        <Button onClick={() => setOpenedModal(true)} type="add">
+        <Button
+          onClick={() => {
+            setOpenedModal(true);
+            setCurrentData([]);
+          }}
+          type="add"
+        >
           Add Employee
         </Button>
         <Pagination />

@@ -1,24 +1,38 @@
 import { useForm } from "react-hook-form";
 import { useOutsideClick } from "../context/OutSideClick";
 import Button from "./Button";
-import Loader from "./Loader";
 import ErrorInput from "./ErrorInput";
+import { useConFast } from "../context/ContextProject";
 const styleInput =
   " w-[90%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-1 xs:py-2 outline-none ";
 const label =
   " xs:w-[20%] w-[25%]  md:text-lg text-sm sm:text-base md:font-bold font-base xs:font-semibold mb-1 xs:mb-0";
 const container = " flex flex-col sm:flex-row space-y-0 text-stone-800";
 
-function Modal({ setOpenedModal, openedModal }) {
+function Modal({ setOpenedModal }) {
   const ref = useOutsideClick(() => setOpenedModal(false));
-  const { register, formState, handleSubmit, reset } = useForm();
+  /////////////////////////
+  const { AddItem, isLoading, currentData, updateItem } = useConFast();
+  const defaltData = currentData;
+  /////////////////////
+  const { register, formState, handleSubmit } = useForm({
+    defaultValues: defaltData,
+  });
+  ////////////////////////////
   const { errors } = formState;
+  ////////////////////
+  const add = Boolean(currentData.length === 0);
+  //////////////////////////
 
   function onSubmit(data) {
-    console.log(data);
-    reset(data);
+    if (add) {
+      AddItem(data, "employees");
+    } else {
+      updateItem(data, "employees");
+    }
     setOpenedModal(false);
   }
+
   return (
     <div className="overlay overflow-scroll scroll">
       <div
@@ -38,6 +52,7 @@ function Modal({ setOpenedModal, openedModal }) {
 
             <input
               type="text"
+              disabled={isLoading}
               className={`${styleInput}`}
               placeholder={`Please Enter Your Job...`}
               {...register("job", { required: "the job is required" })}
@@ -49,6 +64,7 @@ function Modal({ setOpenedModal, openedModal }) {
 
             <input
               type="text"
+              disabled={isLoading}
               placeholder={`Please Enter Your Name..`}
               className={styleInput}
               {...register("name", { required: "the name is required" })}
@@ -60,6 +76,7 @@ function Modal({ setOpenedModal, openedModal }) {
             <input
               className={styleInput}
               type="number"
+              disabled={isLoading}
               placeholder={`Please Enter Your Work  Hour...`}
               {...register("hour", { required: "the hour is required" })}
             />
@@ -70,6 +87,7 @@ function Modal({ setOpenedModal, openedModal }) {
             <input
               className={styleInput}
               type="number"
+              disabled={isLoading}
               placeholder={`Please Enter Your Salary...`}
               {...register("salary", { required: "the salary is required" })}
             />
@@ -79,6 +97,7 @@ function Modal({ setOpenedModal, openedModal }) {
             <label className={label}>Phone</label>
             <input
               className={styleInput}
+              disabled={isLoading}
               type="number"
               placeholder={`Please Enter Your Phone...`}
               {...register("phone", { required: "the phone is required" })}
@@ -90,6 +109,7 @@ function Modal({ setOpenedModal, openedModal }) {
           >
             <label className="text-xl sm:mr-10 mr-0 ">Confirmed</label>
             <input
+              disabled={isLoading}
               className="w-10 xs:h-7 h-5 bg-red-500  "
               type="checkbox"
               {...register("confirm")}
@@ -98,7 +118,7 @@ function Modal({ setOpenedModal, openedModal }) {
         </div>
         <div className="py-5">
           <Button type="add" onClick={handleSubmit(onSubmit)}>
-            Add
+            {add ? "Add" : "Edit"}
           </Button>
           <Button
             addStyle="hidden sm:block"

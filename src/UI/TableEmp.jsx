@@ -3,38 +3,12 @@ import Loader from "./Loader";
 
 import Empty from "./Empty";
 import ErrorFetch from "./ErrorFetch";
-import { useEffect } from "react";
-import { collection, onSnapshot, query } from "firebase/firestore";
-import { db } from "../services/firebase";
 import { useConFast } from "../context/ContextProject";
 
 function TableEmp() {
-  const {
-    isLoading,
-    setIsLoading,
-    isError,
-    data: employees,
-    setdata,
-    setIsError,
-  } = useConFast();
+  const { isLoading, isError, data: employees, Change } = useConFast();
   //
-  useEffect(() => {
-    const q = query(collection(db, "employees"));
-    setIsLoading(true);
-    onSnapshot(q, (QuerySnapshot) => {
-      const data = [];
-      QuerySnapshot.forEach((doc) => {
-        data.push({ ...doc.data(), id: doc.id });
-      });
-      setdata(data);
-      setIsLoading(false);
-    });
-    if (navigator.onLine) {
-      setIsError(false);
-    } else {
-      setIsError(true);
-    }
-  }, [setIsLoading, setdata, setIsError]);
+  Change("employees");
 
   if (isLoading) return <Loader />;
   if (isError) return <ErrorFetch />;

@@ -3,26 +3,35 @@ import Button from "./Button";
 import { useOutsideClick } from "../context/OutSideClick";
 import { useForm } from "react-hook-form";
 import ErrorInput from "./ErrorInput";
+import { useConFast } from "../context/ContextProject";
 const styleInput =
   " w-[75%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-1 xs:py-2 outline-none ";
 const label =
   " xs:w-[20%] w-[25%]  md:text-lg text-sm sm:text-base md:font-bold font-base xs:font-semibold mb-1 xs:mb-0";
 const container = " flex flex-col sm:flex-row space-y-0 text-stone-800";
-function Modal2({ setOpenedModal2, openedModal2 }) {
+function Modal2({ setOpenedModal2 }) {
   const ref = useOutsideClick(() => setOpenedModal2(false));
-  // const [ddd, setDdd] = useState("");
-  const { register, formState, handleSubmit } = useForm();
+  ////////////////////////
+  const { AddItem, isLoading, currentData, updateItem } = useConFast();
+  const defaltData = currentData;
+  ////////////////////////////////
+  const { register, formState, handleSubmit } = useForm({
+    defaultValues: defaltData,
+  });
   const { errors } = formState;
-
+  ///////////////////////////////////////////
+  const add = Boolean(currentData.length === 0);
+  /////////////////////
   function onSubmit(data) {
-    console.log(data);
+    if (add) {
+      AddItem(data, "incomes");
+    } else {
+      updateItem(data, "incomes");
+    }
     setOpenedModal2(false);
   }
   return (
-    <div
-      onSubmit={handleSubmit(onSubmit)}
-      className={`overlay overflow-scroll scroll`}
-    >
+    <div className={`overlay overflow-scroll scroll`}>
       <div
         ref={ref}
         className="lg:w-[60%] w-[80%] bg-vanilla-500 opacity-95 rounded-3xl p-16 h-fit mx-auto mt-12 "
@@ -42,6 +51,7 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
 
             <input
               type="text"
+              disabled={isLoading}
               className={`${styleInput}`}
               placeholder={`please enter your company...`}
               {...register("company", { required: "the company is required" })}
@@ -53,6 +63,7 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
 
             <input
               type="text"
+              disabled={isLoading}
               placeholder={`please enter your dealer...`}
               className={styleInput}
               {...register("dealer", {
@@ -64,16 +75,18 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
           <div className={container}>
             <label className={label}>Package</label>
             <input
+              disabled={isLoading}
               className={styleInput}
               type="number"
               placeholder={`please enter your package...`}
-              {...register("package", { required: "the package is required" })}
+              {...register("packages", { required: "the package is required" })}
             />
-            <ErrorInput message={errors?.package?.message} />
+            <ErrorInput message={errors?.packages?.message} />
           </div>
           <div className={container}>
             <label className={label}>Benefit</label>
             <input
+              disabled={isLoading}
               className={styleInput}
               type="number"
               placeholder={`please enter your benefit...`}
@@ -86,6 +99,7 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
           <div className={container}>
             <label className={label}>Phone</label>
             <input
+              disabled={isLoading}
               className={styleInput}
               type="number"
               placeholder="please enter your phone..."
@@ -98,6 +112,7 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
           <div className={container}>
             <label className={label}>Date</label>
             <input
+              disabled={isLoading}
               className={styleInput}
               type="date"
               {...register("date", { required: "the date is required" })}
@@ -107,7 +122,7 @@ function Modal2({ setOpenedModal2, openedModal2 }) {
         </div>
         <div className="py-5">
           <Button type="add" onClick={handleSubmit(onSubmit)}>
-            add
+            {add ? "Add" : "Edit"}
           </Button>
           <Button
             addStyle="hidden sm:block"

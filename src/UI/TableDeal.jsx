@@ -3,38 +3,13 @@ import Empty from "./Empty";
 import Loader from "./Loader";
 import { useConFast } from "../context/ContextProject";
 import ErrorFetch from "./ErrorFetch";
-import { useEffect } from "react";
-import { collection, onSnapshot, query } from "firebase/firestore";
-import { db } from "../services/firebase";
+// import { useEffect } from "react";
+// import { collection, onSnapshot, query } from "firebase/firestore";
+// import { db } from "../services/firebase";
 
 function TableDeal() {
-  const {
-    isLoading,
-    setIsLoading,
-    setIsError,
-    isError,
-    data: deal,
-    setdata,
-  } = useConFast();
-  //
-  useEffect(() => {
-    const q = query(collection(db, "incomes"));
-    setIsLoading(true);
-    onSnapshot(q, (QuerySnapshot) => {
-      const data = [];
-      QuerySnapshot.forEach((doc) => {
-        data.push({ ...doc.data(), id: doc.id });
-      });
-      setdata(data);
-      setIsLoading(false);
-    });
-    if (navigator.onLine) {
-      setIsError(false);
-      // console.log(window.width());
-    } else {
-      setIsError(true);
-    }
-  }, [setIsLoading, setdata, setIsError]);
+  const { isLoading, isError, data: deal, Change } = useConFast();
+  Change("incomes");
 
   if (isLoading) return <Loader />;
   if (isError) return <ErrorFetch />;

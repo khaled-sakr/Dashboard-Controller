@@ -1,12 +1,21 @@
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 function Filter({ withData, addStyle }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  function filterBy(e) {
+    searchParams.set("sortBy", e.target.value);
+    setSearchParams(searchParams);
+  }
   return (
-    <div>
+    <>
       <select
         className={` cursor-pointer float-right bg-vanilla-600 hover:bg-vanilla-700 smd:text-xl text-xs  font-semibold mt-[20px] rounded-lg py-2  text-vanilla-100 outline-none text-center shad ${
           addStyle && addStyle
         }`}
+        onChange={filterBy}
       >
-        <option value={1}>filter</option>
+        <option value={1}>All</option>
 
         {withData ? (
           <option value={2}>Today</option>
@@ -17,7 +26,7 @@ function Filter({ withData, addStyle }) {
           </>
         )}
       </select>
-    </div>
+    </>
   );
 }
 
