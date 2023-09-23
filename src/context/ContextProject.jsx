@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { db } from "../services/firebase";
+import { formatDate } from "./date";
 const ContextProjectPro = createContext();
 //
 
@@ -22,6 +23,7 @@ function ContextProject({ children }) {
   const [data, setdata] = useState([]);
   const [currentData, setCurrentData] = useState([]);
   const [currentId, setCurrentId] = useState([]);
+  const today = formatDate(new Date());
   ////////////////////////////
   // total fetch
   function Change(type) {
@@ -104,6 +106,7 @@ function ContextProject({ children }) {
         setCurrentData,
         currentId,
         setCurrentId,
+        today,
       }}
     >
       {children}

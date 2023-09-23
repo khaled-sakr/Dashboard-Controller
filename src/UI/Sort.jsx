@@ -1,16 +1,17 @@
-import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function Sort({ withData, addStyle }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  // searchParams.set("sortBy", sort);
-  // setSearchParams("sortBy");
+  const sortBy = searchParams.get("sortBy") || "";
 
-  // searchParams.set("sortBy", e.target.value);
+  // if (sortBy === "all") {
+  //   searchParams.set("sortBy", "");
+  //   setSearchParams(searchParams);
+  // }
+
   // setSearchParams(searchParams);
-  //   const [searchParams, setSearchParams] = useSearchParams();
-  // const sortBy = searchParams.get("sortBy") || "";
-  function sortBy(e) {
+
+  function handleChange(e) {
     searchParams.set("sortBy", e.target.value);
     setSearchParams(searchParams);
   }
@@ -19,17 +20,22 @@ function Sort({ withData, addStyle }) {
     <>
       <select
         className={` cursor-pointer float-right bg-vanilla-600 hover:bg-vanilla-700 smd:text-xl text-xs  font-semibold xs:ml-6 ml-2 xs:mr-9 mr-3 mt-[20px] rounded-lg  p-2  text-vanilla-100 outline-none shad text-center ${addStyle}`}
-        onChange={sortBy}
+        value={sortBy}
+        onChange={handleChange}
       >
-        <option value={1}>All</option>
+        <option value="normal">normal</option>
 
         {withData === "employees" ? (
           <>
-            <option value={2}>Salary(up)</option>
-            <option value={3}>Salary(down)</option>
+            <option value="salaryup">Salary(up)</option>
+            <option value="salarydown">Salary(down)</option>
           </>
         ) : (
-          <option value={2}>Date</option>
+          <>
+            <option value="date">date</option>
+            <option value="benefitup">benefit(up)</option>
+            <option value="benefitdown">benefit(down)</option>
+          </>
         )}
       </select>
     </>

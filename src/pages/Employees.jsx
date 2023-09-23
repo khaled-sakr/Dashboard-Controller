@@ -10,7 +10,7 @@ function Employees() {
   return (
     <>
       <Sort withData="employees" />
-      <Filter withData="employees" addStyle="sm:px-9 px-0" />
+      <Filter withData="employees" addStyle="sm:px-6 px-0" />
 
       {openedModal && (
         <Modal setOpenedModal={setOpenedModal} openedModal={openedModal} />

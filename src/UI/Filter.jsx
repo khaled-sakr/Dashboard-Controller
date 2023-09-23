@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function Filter({ withData, addStyle }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const filterValue = searchParams.get("filterBy") || "";
   function filterBy(e) {
-    searchParams.set("sortBy", e.target.value);
+    searchParams.set("filterBy", e.target.value || "");
     setSearchParams(searchParams);
   }
   return (
@@ -14,16 +14,17 @@ function Filter({ withData, addStyle }) {
           addStyle && addStyle
         }`}
         onChange={filterBy}
+        value={filterValue}
       >
-        <option value={1}>All</option>
+        <option value="all">all</option>
 
-        {withData ? (
-          <option value={2}>Today</option>
-        ) : (
+        {withData === "employees" ? (
           <>
-            <option value={2}>Confirmed</option>
-            <option value={3}>up 5000$</option>
+            <option value="confirmed">confirmed</option>
+            <option value="up5000$">up 5000</option>
           </>
+        ) : (
+          <option value="today">today</option>
         )}
       </select>
     </>

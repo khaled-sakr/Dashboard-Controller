@@ -10,7 +10,7 @@ function Incomes() {
   const { openedModal2, setOpenedModal2, setCurrentData } = useConFast();
   return (
     <>
-      <Sort withData="incomes" addStyle="sm:px-9 px-3 xs:text-xs text-center" />
+      <Sort withData="incomes" addStyle=" xs:text-xs text-center" />
       <Filter withData="incomes" addStyle="sm:px-9 px-3 " />
 
       {openedModal2 && (
