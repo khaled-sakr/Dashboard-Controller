@@ -1,10 +1,14 @@
 import { useSearchParams } from "react-router-dom";
+import { useConFast } from "../context/ContextProject";
 
 function Filter({ withData, addStyle }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { setPage } = useConFast();
   const filterValue = searchParams.get("filterBy") || "";
   function filterBy(e) {
-    searchParams.set("filterBy", e.target.value || "");
+    setPage(1);
+    searchParams.set("filterBy", e.target.value);
+    e.target.value === "all" && searchParams.delete("filterBy");
     setSearchParams(searchParams);
   }
   return (

@@ -8,8 +8,8 @@ function Employee({ employee }) {
         {confirm ? "yes" : "no"}
       </span>
       <span className="col-span-2 border-r border-vanilla-400">{name}</span>
-      <span className="col-span-1 border-r border-vanilla-400">{hour}</span>
-      <span className="col-span-2 border-r border-vanilla-400">{salary}</span>
+      <span className="col-span-1 border-r border-vanilla-400">{hour} h</span>
+      <span className="col-span-2 border-r border-vanilla-400">{salary} $</span>
       <span className="col-span-2">{phone}</span>
       <span className="col-span-1 mx-auto ml-4 relative">
         <ThreeDot type="employees" idItem={id} />

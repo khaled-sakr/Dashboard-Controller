@@ -23,7 +23,10 @@ function ContextProject({ children }) {
   const [data, setdata] = useState([]);
   const [currentData, setCurrentData] = useState([]);
   const [currentId, setCurrentId] = useState([]);
+  const [lastPage, setLastPage] = useState(Math.floor(data.length / 6) + 1);
+  const [page, setPage] = useState(1);
   const today = formatDate(new Date());
+  const pageSize = 5;
   ////////////////////////////
   // total fetch
   function Change(type) {
@@ -39,6 +42,7 @@ function ContextProject({ children }) {
         });
         setdata(data);
         setIsLoading(false);
+        setLastPage(Math.floor(data.length / 6) + 1);
       });
       if (navigator.onLine) {
         setIsError(false);
@@ -107,6 +111,11 @@ function ContextProject({ children }) {
         currentId,
         setCurrentId,
         today,
+        lastPage,
+        page,
+        setPage,
+        pageSize,
+        setLastPage,
       }}
     >
       {children}

@@ -1,8 +1,10 @@
 import { useSearchParams } from "react-router-dom";
+import { useConFast } from "../context/ContextProject";
 
 function Sort({ withData, addStyle }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const sortBy = searchParams.get("sortBy") || "";
+  const sortBy = searchParams.get("sortBy");
+  const { setPage } = useConFast();
 
   // if (sortBy === "all") {
   //   searchParams.set("sortBy", "");
@@ -12,7 +14,9 @@ function Sort({ withData, addStyle }) {
   // setSearchParams(searchParams);
 
   function handleChange(e) {
+    setPage(1);
     searchParams.set("sortBy", e.target.value);
+    e.target.value === "normal" && searchParams.delete("sortBy");
     setSearchParams(searchParams);
   }
 
@@ -20,7 +24,7 @@ function Sort({ withData, addStyle }) {
     <>
       <select
         className={` cursor-pointer float-right bg-vanilla-600 hover:bg-vanilla-700 smd:text-xl text-xs  font-semibold xs:ml-6 ml-2 xs:mr-9 mr-3 mt-[20px] rounded-lg  p-2  text-vanilla-100 outline-none shad text-center ${addStyle}`}
-        value={sortBy}
+        value={sortBy || ""}
         onChange={handleChange}
       >
         <option value="normal">normal</option>
