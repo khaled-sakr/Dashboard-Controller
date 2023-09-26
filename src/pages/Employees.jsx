@@ -16,16 +16,14 @@ function Employees() {
         <Modal setOpenedModal={setOpenedModal} openedModal={openedModal} />
       )}
 
-      <div className="grid grid-cols-12 text-center mx-4 mt-20 xs:text-sm md:text-2xl text-[9px] sm:text-base  font-normal sm:font-semibold text-vanilla-700 ">
-        <span className="col-span-2 border-r border-vanilla-400">
-          Job Title
-        </span>
-        <span className="col-span-2 border-r border-vanilla-400">Confirm</span>
-        <span className="col-span-2 border-r border-vanilla-400">Name</span>
-        <span className="col-span-1 border-r border-vanilla-400 px-auto">
+      <div className="grid grid-cols-12 text-center mx-4 mt-20 xs:text-sm md:text-xl text-[9px] sm:text-base font-normal sm:font-semibold text-black ">
+        <span className="col-span-2 border-r border-gray-500">Job Title</span>
+        <span className="col-span-2 border-r border-gray-500">Confirm</span>
+        <span className="col-span-2 border-r border-gray-500">Name</span>
+        <span className="col-span-1 border-r border-gray-500 px-auto">
           Hour
         </span>
-        <span className="col-span-2 border-r border-vanilla-400">Salary</span>
+        <span className="col-span-2 border-r border-gray-500">Salary</span>
         <span className="col-span-2 ">Phone</span>
       </div>
       <TableEmp type="employees" />
@@ -36,6 +34,7 @@ function Employees() {
             setCurrentData([]);
           }}
           type="add"
+          addStyle="mr-6 md:px-9 px-6 sm:py-2 py-1 sm:mr-4 mr-9 "
         >
           Add Employee
         </Button>

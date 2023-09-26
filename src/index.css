@@ -4,7 +4,7 @@
 
 @layer components {
   .shad {
-    box-shadow: rgb(53, 52, 41) 5px -3px 5px;
+    box-shadow: rgb(82, 86, 90) 4px 2px 5px;
   }
   .overlay {
     position: fixed;
@@ -32,7 +32,7 @@
 
 @keyframes opening {
   from {
-    transform: translatey(-100%);
+    transform: translatey(100%);
   }
   to {
     transform: translatey(0);

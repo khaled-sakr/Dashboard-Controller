@@ -1,31 +1,34 @@
+import { AiFillHome } from "react-icons/ai";
+import { MdEngineering } from "react-icons/md";
+import { GiMoneyStack } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 function Sidebar() {
   const { pathname } = useLocation();
   return (
-    <div className="md:col-span-2 col-span-3 row-span-1 lg:text-lg md:text-base text-xs text-center p-1 sm:text-sm bg-vanilla-600 ">
+    <div className="md:col-span-2 col-span-3 row-span-1  md:text-xl text-md  text-center pt-6 bg-stone-300 md:w-24  sm:w-20 w-14  ">
       <ul>
         <li>
-          <Link to="/">
+          {/* <Link to="/">
             <img
-              src="public\images\photo_2023-09-15_15-43-25.jpg"
+              src="../images/photo_2023-09-15_15-43-25.jpg"a
               alt="vanilla.jpg"
-              className="rounded-full max-w-full   pl-0 sm:pl-auto after:rounded-full"
+              className="rounded-full invisible max-w-full  pl-0 sm:pl-auto after:rounded-full"
             />
-          </Link>
+          </Link> */}
         </li>
 
         <li>
           <Link to="/">
             <Button type="normal" select={pathname === "/"}>
-              Home
+              <AiFillHome />
             </Button>
           </Link>
         </li>
         <li>
           <Link to="/employees">
             <Button type="normal" select={pathname === "/employees"}>
-              Employees
+              <MdEngineering />
             </Button>
           </Link>
         </li>
@@ -36,7 +39,7 @@ function Sidebar() {
               type="normal"
               select={pathname === "/incomes"}
             >
-              Incomes
+              <GiMoneyStack />
             </Button>
           </Link>
         </li>

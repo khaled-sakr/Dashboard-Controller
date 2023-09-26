@@ -4,10 +4,10 @@ import Button from "./Button";
 import ErrorInput from "./ErrorInput";
 import { useConFast } from "../context/ContextProject";
 const styleInput =
-  " w-[90%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-1 xs:py-2 outline-none ";
+  " w-[70%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-0 xs:py-[2px] outline-none text-stone-600";
 const label =
-  " xs:w-[20%] w-[25%]  md:text-lg text-sm sm:text-base md:font-bold font-base xs:font-semibold mb-1 xs:mb-0";
-const container = " flex flex-col sm:flex-row space-y-0 text-stone-800";
+  " xs:w-[20%] w-[25%]  md:text-base text-xs sm:text-sm md:font-bold font-base xs:font-semibold mb-1 xs:mb-0";
+const container = " flex flex-col  xs:flex-row text-stone-800";
 
 function Modal({ setOpenedModal }) {
   const ref = useOutsideClick(() => setOpenedModal(false));
@@ -34,10 +34,10 @@ function Modal({ setOpenedModal }) {
   }
 
   return (
-    <div className="overlay overflow-scroll scroll">
+    <div className="overlay overflow-scroll scroll ">
       <div
         ref={ref}
-        className="lg:w-[60%] w-[80%] bg-vanilla-500 opacity-95 rounded-3xl p-16 h-fit mx-auto mt-12 "
+        className="xl:w-[60%] w-[80%] bg-stone-300 opacity-95 rounded-3xl px-12 py-10  h-fit mx-auto mt-8 mb-8 "
       >
         <Button
           onClick={() => setOpenedModal(() => false)}
@@ -46,7 +46,7 @@ function Modal({ setOpenedModal }) {
         >
           X
         </Button>
-        <div className="flex flex-col gap-10 my-16 justify-center ">
+        <div className="flex flex-col gap-8 mt-14 mb-4 justify-center ">
           <div className={container}>
             <label className={label}>Job</label>
 
@@ -107,26 +107,32 @@ function Modal({ setOpenedModal }) {
           <div
             className={`${container} xs:justify-start justify-between gap-5`}
           >
-            <label className="text-xl sm:mr-10 mr-0 ">Confirmed</label>
+            <label className="md:text-xl text-md font-semibold sm:mr-10 mr-0 ">
+              Confirmed
+            </label>
             <input
               disabled={isLoading}
-              className="w-10 xs:h-7 h-5 bg-red-500  "
+              className="xl:w-7 sm:w-5 w-4 xs:h-6 h-5 bg-red-500  "
               type="checkbox"
               {...register("confirm")}
             />
           </div>
-        </div>
-        <div className="py-5">
-          <Button type="add" onClick={handleSubmit(onSubmit)}>
-            {add ? "Add" : "Edit"}
-          </Button>
-          <Button
-            addStyle="hidden sm:block"
-            type="danger"
-            onClick={() => setOpenedModal(false)}
-          >
-            Cancle
-          </Button>
+          <div className="py-0">
+            <Button
+              type="add"
+              addStyle="px-6 sm:py-[2.5px] py-1 rounded-md bg-sky-800 hover:bg-sky-900 "
+              onClick={handleSubmit(onSubmit)}
+            >
+              {add ? "Add" : "Edit"}
+            </Button>
+            <Button
+              addStyle="hidden sm:block"
+              type="danger"
+              onClick={() => setOpenedModal(false)}
+            >
+              Cancle
+            </Button>
+          </div>
         </div>
       </div>
     </div>

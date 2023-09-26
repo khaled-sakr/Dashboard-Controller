@@ -1,34 +1,17 @@
 const base =
-  " w-[95%] float-right ml-9 relative cursor-pointer px-0 sm:mx-2 mx-0 rounded-[40px] md:px-6 py-8 md:font-bold font-semibold  mt-12 shad ";
+  " w-[80%]  float-right  relative cursor-pointer  rounded-xl py-5 md:px-7 sm:px-4 px-4 md:mr-2 sm:mr-2 mr-1 md:mx-3 mx-1  text-center md:font-bold font-semibold  mt-10 shad ";
 
 const styles = {
-  normal: base + " bg-vanilla-200 text-stone-900",
+  normal: base + " bg-stone-100 text-sky-700 ",
   select:
-    " after:absolute  after:bg-vanilla-200 md:after:w-[28px] after:w-7 md:after:h-[70px] after:h-[62px] sm:after:h-[66px] md:after:-right-3 after:-right-[12px] after:top-2 shad",
-  add: " mr-6  cursor-pointer rounded-xl bg-vanilla-800 text-vanilla-200 text-center float-right md:px-9 px-6 text-xs sm:text-base md:text-xl sm:py-2 py-2 sm:mr-4 mr-9 hover:bg-vanilla-700 sm:font-semibold font-base shad ",
+    " after:absolute  after:bg-stone-100 md:after:w-[35px] sm:after:w-9 after:w-[31px] md:after:h-[60px] after:h-[56px] sm:after:h-[56px] md:after:-right-6 sm:after:-right-6  after:-right-[20px] after:top-[0px] shad after:-top-0 ",
+  add: " cursor-pointer rounded-xl  text-stone-100 text-center float-right text-xs sm:text-base md:text-lg bg-sky-900 hover:bg-sky-950 sm:font-semibold font-base shad ",
   danger:
-    "text-white text-xs sm:text-base md:text-xl rounded-xl border-red-300 sm:px-4 px-3 sm:py-2 py-[9px] bg-red-600 hover:bg-red-700 mx-2 float-right block font-semibold shad ",
-  pag: "cursor-pointer md:mx-7 mx-0 xs:mx-2 sm:px-2  md:px-8 px-1 sm:py-1 md:py-2 sm:py-1 py-0 bg-vanilla-500 rounded-full  sm:text-lg text-normal hover:bg-vanilla-400 shad disabled:bg-stone-400 disabled:cursor-not-allowed  ",
+    "text-white text-xs sm:text-sm md:text-base rounded-lg border-red-300 sm:px-3 px-2 sm:py-1 py-[4px] bg-red-600 hover:bg-red-700 mx-2 float-right block font-semibold shad ",
+  pag: " text-sky-900 sm:font-bold font-semibold cursor-pointer mx-0  rounded-lg hover:disabled:text-stone-100 hover:disabled:bg-gray-500   sm:text-lg md:text-2xl text-sm hover:bg-sky-950  hover:text-stone-100 disabled:text-zinc-400 disabled:cursor-not-allowed  ",
 };
 
-function Button({
-  children,
-  addStyle,
-  onClick,
-  onOpenedModal,
-  onClosedModal,
-  onOpenedModal2,
-  onClosedModal2,
-  nextPage,
-  prevPage,
-  type,
-  select,
-  disabled,
-}) {
-  // function Click() {
-  //   onOpenedModal2 && onOpenedModal2();
-  //   onClosedModal2 && onClosedModal2();
-  // }
+function Button({ children, addStyle, onClick, type, select, disabled }) {
   return (
     <button
       onClick={onClick}

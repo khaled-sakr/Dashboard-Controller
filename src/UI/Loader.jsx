@@ -7,7 +7,7 @@ function Loader() {
         height="70"
         width="70"
         radius="9"
-        color="#796938"
+        color="#4f566b"
         ariaLabel="three-dots-loading"
         wrapperStyle={{}}
         wrapperClassName=""

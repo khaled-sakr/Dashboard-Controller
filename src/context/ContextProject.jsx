@@ -8,7 +8,13 @@ import {
   query,
   updateDoc,
 } from "firebase/firestore";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { db } from "../services/firebase";
 import { formatDate } from "./date";
 const ContextProjectPro = createContext();
@@ -20,37 +26,47 @@ function ContextProject({ children }) {
   const [openedModal2, setOpenedModal2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [data, setdata] = useState([]);
+  const [dataInc, setDataInc] = useState([]);
+  const [dataEmp, setDataEmp] = useState([]);
   const [currentData, setCurrentData] = useState([]);
   const [currentId, setCurrentId] = useState([]);
-  const [lastPage, setLastPage] = useState(Math.floor(data.length / 6) + 1);
+  const [lastPage, setLastPage] = useState(
+    Math.floor(dataEmp.length / 6) + 1 || Math.floor(dataInc.length / 6) + 1
+  );
   const [page, setPage] = useState(1);
   const today = formatDate(new Date());
-  const pageSize = 5;
-  ////////////////////////////
+  const pageSize = 4;
+  //////////////////////////////
   // total fetch
-  function Change(type) {
-    useEffect(() => {
-      const q = query(
-        collection(db, `${type === "incomes" ? "incomes" : "employees"}`)
-      );
-      setIsLoading(true);
-      onSnapshot(q, (QuerySnapshot) => {
-        const data = [];
-        QuerySnapshot.forEach((doc) => {
-          data.push({ ...doc.data(), id: doc.id });
+  const Change = useCallback((type) => {
+    function Change() {
+      useEffect(() => {
+        const q = query(
+          collection(db, `${type === "incomes" ? "incomes" : "employees"}`)
+        );
+        setIsLoading(true);
+        onSnapshot(q, (QuerySnapshot) => {
+          const data = [];
+          QuerySnapshot.forEach((doc) => {
+            data.push({ ...doc.data(), id: doc.id });
+          });
+          if (type === "incomes") {
+            setDataInc(data);
+          } else if (type === "employees") {
+            setDataEmp(data);
+          }
+          setIsLoading(false);
+          setLastPage(Math.floor(data.length / 6) + 1);
         });
-        setdata(data);
-        setIsLoading(false);
-        setLastPage(Math.floor(data.length / 6) + 1);
-      });
-      if (navigator.onLine) {
-        setIsError(false);
-      } else {
-        setIsError(true);
-      }
-    }, [type]);
-  }
+        if (navigator.onLine) {
+          setIsError(false);
+        } else {
+          setIsError(true);
+        }
+      }, [type]);
+    }
+    Change();
+  }, []);
   async function AddItem(data, type) {
     setIsLoading(true);
     await addDoc(
@@ -100,8 +116,10 @@ function ContextProject({ children }) {
         setIsLoading,
         isError,
         setIsError,
-        data,
-        setdata,
+        dataInc,
+        setDataInc,
+        dataEmp,
+        setDataEmp,
         Change,
         deleteItem,
         AddItem,

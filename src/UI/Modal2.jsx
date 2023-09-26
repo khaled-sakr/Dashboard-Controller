@@ -1,14 +1,13 @@
-import { useState } from "react";
 import Button from "./Button";
 import { useOutsideClick } from "../context/OutSideClick";
 import { useForm } from "react-hook-form";
 import ErrorInput from "./ErrorInput";
 import { useConFast } from "../context/ContextProject";
 const styleInput =
-  " w-[75%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-1 xs:py-2 outline-none ";
+  " w-[70%] ml-2 col-span-1 w-full rounded-md sm:px-9 px-2 py-0 xs:py-[2px] outline-none ";
 const label =
-  " xs:w-[20%] w-[25%]  md:text-lg text-sm sm:text-base md:font-bold font-base xs:font-semibold mb-1 xs:mb-0";
-const container = " flex flex-col sm:flex-row space-y-0 text-stone-800";
+  " xs:w-[20%] w-[25%]  md:text-base text-xs sm:text-sm md:font-bold font-base xs:font-semibold mb-1 xs:mb-0";
+const container = " flex flex-col  xs:flex-row text-stone-800";
 function Modal2({ setOpenedModal2 }) {
   const ref = useOutsideClick(() => setOpenedModal2(false));
   ////////////////////////
@@ -34,7 +33,7 @@ function Modal2({ setOpenedModal2 }) {
     <div className={`overlay overflow-scroll scroll`}>
       <div
         ref={ref}
-        className="lg:w-[60%] w-[80%] bg-vanilla-500 opacity-95 rounded-3xl p-16 h-fit mx-auto mt-12 "
+        className="xl:w-[60%] w-[80%] bg-stone-300 opacity-95 rounded-3xl px-12 py-10  h-fit mx-auto mt-8 mb-8 "
       >
         <div className="pb-9">
           <Button
@@ -45,7 +44,7 @@ function Modal2({ setOpenedModal2 }) {
             X
           </Button>
         </div>
-        <div className="flex flex-col gap-10 my-16 justify-center ">
+        <div className="flex flex-col gap-8 mt-14 mb-4 justify-center ">
           <div className={container}>
             <label className={label}>Company</label>
 
@@ -121,7 +120,11 @@ function Modal2({ setOpenedModal2 }) {
           </div>
         </div>
         <div className="py-5">
-          <Button type="add" onClick={handleSubmit(onSubmit)}>
+          <Button
+            type="add"
+            onClick={handleSubmit(onSubmit)}
+            addStyle="px-6 sm:py-[2.5px] py-1 rounded-md"
+          >
             {add ? "Add" : "Edit"}
           </Button>
           <Button

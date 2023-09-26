@@ -1,16 +1,20 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import Header from "./Header";
 function AppLayout() {
   return (
-    <div
-      className="grid grid-rows-9 grid-cols-12 bg-vanilla-400 min-h-screen max-h-full
-    min-w-full max-w-max "
-    >
-      <Sidebar />
-      <div className="relative col-span-9 md:col-span-10 row-span-8 rounded-s-[100px] rounded-e-[50px] bg-vanilla-200 shad overflow-x-auto">
-        <Outlet />
+    <>
+      <Header />
+      <div
+        className="flex bg-stone-100  min-h-screen max-h-full
+      "
+      >
+        <Sidebar />
+        <div className=" rounded-xl  w-10/12 mx-auto  bg-stone-100 overflow-x-auto">
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

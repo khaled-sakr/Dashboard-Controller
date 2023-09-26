@@ -10,7 +10,7 @@ function TableEmp() {
   const {
     isLoading,
     isError,
-    data: employees,
+    dataEmp: employees,
     Change,
     page,
     pageSize,
@@ -18,7 +18,6 @@ function TableEmp() {
   } = useConFast();
   const [searchParams] = useSearchParams();
   Change("employees");
-  console.log(employees);
   ////////////// 1.filter
   const filterUrl = searchParams.get("filterBy");
   let filteredData = employees;
@@ -56,7 +55,7 @@ function TableEmp() {
   if (sortedData.length === 0) return <Empty item="employee" />;
 
   return (
-    <div className="text-center mx-4 mt-6 md:mt-20 md:text-xl text-[8px] xs:text-[10px] sm:text-sm font-normal sm:font-semibold text-stone-600">
+    <div className="text-center mx-4 md:mt-16 mt-8 md:text-base text-[8px] xs:text-[10px] sm:text-sm font-normal sm:font-semibold text-gray-500">
       {pagData.map((employee) => (
         <Employee employee={employee} key={employee.id} />
       ))}

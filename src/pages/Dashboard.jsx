@@ -1,14 +1,19 @@
-import CustomedOutput from "../UI/CustomedOutput";
+import CustomedOutEmp from "../UI/CustomedOutEmp";
+import CustomedOutInc from "../UI/CustomedOutInc";
 import Graph from "../UI/Graph";
-import Statis from "../UI/Statis";
+import StaticEmployees from "../UI/StaticEmployees";
+// import StaticEmployees from "../UI/StaticEmployees";
+import StaticIncomes from "../UI/StaticIncomes";
 function Dashboard() {
   return (
     <>
-      <div className="md:grid flex gap-y-10 gap-x-20  flex-wrap  justify-items-center cols4 gap-2 sm:p-10 p-10">
-        <Statis />
-        <CustomedOutput />
+      <div className="  md:flex grid  flex-wrap cols4 w-fit  ml-5 bg-transparent h-[98%] mt-3 pt-9 rounded-xl">
+        <StaticIncomes />
+        <StaticEmployees />
+        <CustomedOutInc />
+        <CustomedOutEmp />
+        <Graph />
       </div>
-      <Graph />
     </>
   );
 }

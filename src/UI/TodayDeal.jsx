@@ -1,7 +1,7 @@
-function TodayDeal() {
+function TodayDeal({ item }) {
   return (
-    <div className="bg-vanilla-700 h-16 rounded-md mt-5 text-center py-4 text-xl sm:lg text-vanilla-300">
-      Company Name
+    <div className="bg-sky-950 h-16 rounded-[40px] mt-5 text-center py-4 text-xl sm:lg text-stone-300">
+      {item}
     </div>
   );
 }

@@ -13,7 +13,7 @@ function TableDeal() {
   const {
     isLoading,
     isError,
-    data: deals,
+    dataInc: deals,
     Change,
     today,
     page,
@@ -36,7 +36,7 @@ function TableDeal() {
   if (sortUrl === "date") {
     sortedData = filteredData.sort(
       (a, b) =>
-        Number(a.date.replace("-", "").replace("-", "")) -
+        -Number(a.date.replace("-", "").replace("-", "")) +
         Number(b.date.replace("-", "").replace("-", ""))
     );
   } else if (sortUrl === "benefitup") {
@@ -59,7 +59,7 @@ function TableDeal() {
   if (isError) return <ErrorFetch />;
   if (deals.length === 0) return <Empty item="deal" />;
   return (
-    <div className="text-center mx-4 md:mt-20 -mt-10 md:text-xl text-[8px] xs:text-[10px] sm:text-sm font-normal sm:font-semibold text-stone-600">
+    <div className="text-center mx-4 md:mt-16 mt-8 md:text-base text-[8px] xs:text-[10px] sm:text-sm font-normal sm:font-semibold text-gray-500 ">
       {pagData.map((deal) => (
         <Deal deal={deal} key={deal.id} />
       ))}

@@ -23,7 +23,7 @@ function Sort({ withData, addStyle }) {
   return (
     <>
       <select
-        className={` cursor-pointer float-right bg-vanilla-600 hover:bg-vanilla-700 smd:text-xl text-xs  font-semibold xs:ml-6 ml-2 xs:mr-9 mr-3 mt-[20px] rounded-lg  p-2  text-vanilla-100 outline-none shad text-center ${addStyle}`}
+        className={` cursor-pointer float-right bg-sky-900 hover:bg-sky-950 smd:text-xl text-xs  font-semibold xs:ml-6 ml-2 xs:mr-9 mr-3 mt-[20px] rounded-lg  p-2  text-stone-100 outline-none shad text-center ${addStyle}`}
         value={sortBy || ""}
         onChange={handleChange}
       >
