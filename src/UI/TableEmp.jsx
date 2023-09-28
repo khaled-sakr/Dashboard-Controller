@@ -5,20 +5,24 @@ import Empty from "./Empty";
 import ErrorFetch from "./ErrorFetch";
 import { useConFast } from "../context/ContextProject";
 import { useSearchParams } from "react-router-dom";
+import { useConData } from "../context/ContextFetchData";
+import { useEffect } from "react";
 
 function TableEmp() {
   const {
     isLoading,
     isError,
     dataEmp: employees,
-    Change,
-    page,
+    pageEmp,
     pageSize,
-    setLastPage,
+    // setLastPage,
+    setLastPageEmp,
   } = useConFast();
   const [searchParams] = useSearchParams();
-  Change("employees");
-  ////////////// 1.filter
+  const { FetchEmployees } = useConData();
+  FetchEmployees();
+
+  ///////////////// 1.filter
   const filterUrl = searchParams.get("filterBy");
   let filteredData = employees;
   if (filterUrl === "confirmed") {
@@ -28,6 +32,7 @@ function TableEmp() {
   } else {
     filteredData = employees;
   }
+
   ///////////////////// 2.sort
   const sortUrl = searchParams.get("sortBy");
   let sortedData = filteredData;
@@ -42,12 +47,16 @@ function TableEmp() {
   } else {
     sortedData = filteredData;
   }
-  /////////////////////////////////
+  useEffect(() => {
+    if (filteredData.length < employees.length) {
+      setLastPageEmp(Math.ceil(filteredData.length / 6));
+    }
+  });
   //////////////// 3.pagination
-  const pagData = sortedData.slice((page - 1) * pageSize, page * pageSize);
-  if (filteredData.length < employees.length) {
-    setLastPage(Math.floor(filteredData.length / 6) + 1);
-  }
+  const pagData = sortedData.slice(
+    (pageEmp - 1) * pageSize,
+    pageEmp * pageSize
+  );
 
   ///////////////////// conditions
   if (isLoading) return <Loader />;

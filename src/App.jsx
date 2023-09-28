@@ -7,6 +7,7 @@ import AppLayout from "./UI/AppLayout";
 import Error from "./Ui/Error";
 import Incomes from "./pages/Incomes";
 import { ContextProject } from "./context/ContextProject";
+import { ContextFetchData } from "./context/ContextFetchData";
 function App() {
   const router = createBrowserRouter([
     {
@@ -22,9 +23,11 @@ function App() {
 
   return (
     <ContextProject>
-      <React.StrictMode>
-        <RouterProvider router={router} />
-      </React.StrictMode>
+      <ContextFetchData>
+        <React.StrictMode>
+          <RouterProvider router={router} />
+        </React.StrictMode>
+      </ContextFetchData>
     </ContextProject>
   );
 }

@@ -1,8 +1,6 @@
-const base =
-  " w-[80%]  float-right  relative cursor-pointer  rounded-xl py-5 md:px-7 sm:px-4 px-4 md:mr-2 sm:mr-2 mr-1 md:mx-3 mx-1  text-center md:font-bold font-semibold  mt-10 shad ";
-
 const styles = {
-  normal: base + " bg-stone-100 text-sky-700 ",
+  normal:
+    " w-[80%]  float-right  relative cursor-pointer  rounded-xl py-5 md:px-7 sm:px-4 px-4 md:mr-2 sm:mr-2 mr-1 md:mx-3 mx-1  text-center md:font-bold font-semibold  mt-10 shad  bg-stone-100 text-sky-700 ",
   select:
     " after:absolute  after:bg-stone-100 md:after:w-[35px] sm:after:w-9 after:w-[31px] md:after:h-[60px] after:h-[56px] sm:after:h-[56px] md:after:-right-6 sm:after:-right-6  after:-right-[20px] after:top-[0px] shad after:-top-0 ",
   add: " cursor-pointer rounded-xl  text-stone-100 text-center float-right text-xs sm:text-base md:text-lg bg-sky-900 hover:bg-sky-950 sm:font-semibold font-base shad ",

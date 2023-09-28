@@ -6,13 +6,6 @@ function Sort({ withData, addStyle }) {
   const sortBy = searchParams.get("sortBy");
   const { setPage } = useConFast();
 
-  // if (sortBy === "all") {
-  //   searchParams.set("sortBy", "");
-  //   setSearchParams(searchParams);
-  // }
-
-  // setSearchParams(searchParams);
-
   function handleChange(e) {
     setPage(1);
     searchParams.set("sortBy", e.target.value);

@@ -14,15 +14,11 @@ function Modal({ setOpenedModal }) {
   /////////////////////////
   const { AddItem, isLoading, currentData, updateItem } = useConFast();
   const defaltData = currentData;
-  /////////////////////
   const { register, formState, handleSubmit } = useForm({
     defaultValues: defaltData,
   });
-  ////////////////////////////
   const { errors } = formState;
-  ////////////////////
   const add = Boolean(currentData.length === 0);
-  //////////////////////////
 
   function onSubmit(data) {
     if (add) {
@@ -35,7 +31,8 @@ function Modal({ setOpenedModal }) {
 
   return (
     <div className="overlay overflow-scroll scroll ">
-      <div
+      <form
+        onSubmit={handleSubmit(onSubmit)}
         ref={ref}
         className="xl:w-[60%] w-[80%] bg-stone-300 opacity-95 rounded-3xl px-12 py-10  h-fit mx-auto mt-8 mb-8 "
       >
@@ -118,13 +115,11 @@ function Modal({ setOpenedModal }) {
             />
           </div>
           <div className="py-0">
-            <Button
-              type="add"
-              addStyle="px-6 sm:py-[2.5px] py-1 rounded-md bg-sky-800 hover:bg-sky-900 "
-              onClick={handleSubmit(onSubmit)}
-            >
-              {add ? "Add" : "Edit"}
-            </Button>
+            <input
+              type="submit"
+              className="px-6 sm:py-[2.5px] py-1 rounded-md  cursor-pointer text-stone-100 text-center float-right text-xs sm:text-base md:text-lg bg-sky-900 hover:bg-sky-950 sm:font-semibold font-base shad"
+              value={add ? "Add" : "Edit"}
+            />
             <Button
               addStyle="hidden sm:block"
               type="danger"
@@ -134,7 +129,7 @@ function Modal({ setOpenedModal }) {
             </Button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

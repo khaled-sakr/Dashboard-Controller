@@ -9,16 +9,6 @@ function Sidebar() {
     <div className="md:col-span-2 col-span-3 row-span-1  md:text-xl text-md  text-center pt-6 bg-stone-300 md:w-24  sm:w-20 w-14  ">
       <ul>
         <li>
-          {/* <Link to="/">
-            <img
-              src="../images/photo_2023-09-15_15-43-25.jpg"a
-              alt="vanilla.jpg"
-              className="rounded-full invisible max-w-full  pl-0 sm:pl-auto after:rounded-full"
-            />
-          </Link> */}
-        </li>
-
-        <li>
           <Link to="/">
             <Button type="normal" select={pathname === "/"}>
               <AiFillHome />

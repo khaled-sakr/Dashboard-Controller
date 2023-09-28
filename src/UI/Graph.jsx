@@ -7,11 +7,13 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useConData } from "../context/ContextFetchData";
 import { useConFast } from "../context/ContextProject";
 
 function Graph() {
-  const { Change, dataInc } = useConFast();
-  Change("incomes");
+  const { dataInc } = useConFast();
+  const { FetchIncomes } = useConData();
+  FetchIncomes();
   const date = dataInc.map((item) =>
     item.date.replace("-", "").replace("-", "").slice(6, 8)
   );

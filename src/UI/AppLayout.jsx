@@ -19,6 +19,3 @@ function AppLayout() {
 }
 
 export default AppLayout;
-
-/////
-//////md:col-span-2  col-span-3 row-span-1 md:row-span-6

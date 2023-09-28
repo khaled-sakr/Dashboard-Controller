@@ -1,10 +1,12 @@
 import { RiHandHeartFill } from "react-icons/ri";
+import { useConData } from "../context/ContextFetchData";
 import { LuPackageSearch } from "react-icons/lu";
 import { useConFast } from "../context/ContextProject";
 import { kFormatter } from "../context/date";
 function StaticIncomes() {
-  const { dataInc, Change } = useConFast();
-  Change("incomes");
+  const { dataInc } = useConFast();
+  const { FetchEmployees } = useConData();
+  FetchEmployees();
   const totalIncomes = dataInc
     .map((item) => +item.benefit)
     .reduce((acc, cur) => acc + cur, 0);

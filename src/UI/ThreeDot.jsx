@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useConFast } from "../context/ContextProject";
 import { useOutsideClick } from "../context/OutSideClick";
+import { useConData } from "../context/ContextFetchData";
 
 function ThreeDot({ idItem, type }) {
   const [openOption, setOpenOption] = useState(false);
   const {
     deleteItem,
-    Change,
     dataInc,
     dataEmp,
     setCurrentData,
@@ -14,9 +14,13 @@ function ThreeDot({ idItem, type }) {
     setOpenedModal,
     setCurrentId,
   } = useConFast();
+  const { FetchIncomes, FetchEmployees } = useConData();
 
-  //////////////// upload current data
-  Change(type);
+  if (type === "employees") {
+    FetchEmployees();
+  } else {
+    FetchIncomes();
+  }
   const data = type === "employees" ? dataEmp : dataInc;
   const newData = data.find((item) => item.id === idItem);
   //////////////

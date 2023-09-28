@@ -1,9 +1,12 @@
 import { useConFast } from "../context/ContextProject";
 import { kFormatter } from "../context/date";
+import { useConData } from "../context/ContextFetchData";
 import { MdAttachMoney, MdOutlineAssignmentInd } from "react-icons/md";
 function StaticEmployees() {
-  const { dataEmp, Change } = useConFast();
-  Change("employees");
+  const { dataEmp } = useConFast();
+  const { FetchEmployees } = useConData();
+
+  FetchEmployees();
   const totalSalries = dataEmp
     .map((item) => +item.salary)
     .reduce((acc, cur) => acc + cur, 0);

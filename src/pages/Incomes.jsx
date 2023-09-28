@@ -38,7 +38,7 @@ function Incomes() {
         >
           Add Deal
         </Button>
-        <Pagination />
+        <Pagination type="incomes" />
       </div>
     </>
   );

@@ -38,7 +38,7 @@ function Employees() {
         >
           Add Employee
         </Button>
-        <Pagination />
+        <Pagination type="employees" />
       </div>
     </>
   );

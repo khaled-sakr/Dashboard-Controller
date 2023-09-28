@@ -10,17 +10,13 @@ const label =
 const container = " flex flex-col  xs:flex-row text-stone-800";
 function Modal2({ setOpenedModal2 }) {
   const ref = useOutsideClick(() => setOpenedModal2(false));
-  ////////////////////////
   const { AddItem, isLoading, currentData, updateItem } = useConFast();
   const defaltData = currentData;
-  ////////////////////////////////
   const { register, formState, handleSubmit } = useForm({
     defaultValues: defaltData,
   });
   const { errors } = formState;
-  ///////////////////////////////////////////
   const add = Boolean(currentData.length === 0);
-  /////////////////////
   function onSubmit(data) {
     if (add) {
       AddItem(data, "incomes");
@@ -31,7 +27,8 @@ function Modal2({ setOpenedModal2 }) {
   }
   return (
     <div className={`overlay overflow-scroll scroll`}>
-      <div
+      <form
+        onSubmit={handleSubmit(onSubmit)}
         ref={ref}
         className="xl:w-[60%] w-[80%] bg-stone-300 opacity-95 rounded-3xl px-12 py-10  h-fit mx-auto mt-8 mb-8 "
       >
@@ -120,13 +117,18 @@ function Modal2({ setOpenedModal2 }) {
           </div>
         </div>
         <div className="py-5">
-          <Button
+          <input
+            type="submit"
+            className="cursor-pointer text-stone-100 text-center float-right text-xs sm:text-base md:text-lg bg-sky-900 hover:bg-sky-950 sm:font-semibold font-base shad px-6 sm:py-[2.5px] py-1 rounded-md   font-base shad"
+            value={add ? "Add" : "Edit"}
+          />
+          {/* <Button
             type="add"
             onClick={handleSubmit(onSubmit)}
             addStyle="px-6 sm:py-[2.5px] py-1 rounded-md"
           >
             {add ? "Add" : "Edit"}
-          </Button>
+          </Button> */}
           <Button
             addStyle="hidden sm:block"
             type="danger"
@@ -135,7 +137,7 @@ function Modal2({ setOpenedModal2 }) {
             Cancle
           </Button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

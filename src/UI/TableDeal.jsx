@@ -4,6 +4,8 @@ import Loader from "./Loader";
 import { useConFast } from "../context/ContextProject";
 import ErrorFetch from "./ErrorFetch";
 import { useSearchParams } from "react-router-dom";
+import { useConData } from "../context/ContextFetchData";
+import { useEffect } from "react";
 // import { useEffect } from "react";
 // import { collection, onSnapshot, query } from "firebase/firestore";
 // import { db } from "../services/firebase";
@@ -14,14 +16,14 @@ function TableDeal() {
     isLoading,
     isError,
     dataInc: deals,
-    Change,
     today,
-    page,
+    pageInc,
     pageSize,
-    setLastPage,
+    setLastPageInc,
   } = useConFast();
   const [searchParams] = useSearchParams();
-  Change("incomes");
+  const { FetchIncomes } = useConData();
+  FetchIncomes();
   /////////////// 1.filter
   const filterUrl = searchParams.get("filterBy");
   let filteredData = deals;
@@ -46,13 +48,17 @@ function TableDeal() {
   } else {
     sortedData = filteredData;
   }
-  // const finalll = finalData.splice(0, 2);
-  /////////////////////////////////
+  useEffect(() => {
+    if (filteredData.length < deals.length) {
+      setLastPageInc(Math.ceil(filteredData.length / 6));
+    }
+  });
+
   //////////////// 3.pagination
-  const pagData = sortedData.slice((page - 1) * pageSize, page * pageSize);
-  if (filteredData.length < deals.length) {
-    setLastPage(Math.floor(filteredData.length / 6) + 1);
-  }
+  const pagData = sortedData.slice(
+    (pageInc - 1) * pageSize,
+    pageInc * pageSize
+  );
 
   ///////////////////// conditions
   if (isLoading) return <Loader />;

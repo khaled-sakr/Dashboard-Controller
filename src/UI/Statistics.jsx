@@ -1,6 +1,4 @@
 import { RiHandHeartFill } from "react-icons/ri";
-import { FaIceCream } from "react-icons/fa6";
-// import { useConFast } from "../context/ContextProject";
 function Statistics() {
   return (
     <div className="mb-4">

@@ -2,7 +2,6 @@ import CustomedOutEmp from "../UI/CustomedOutEmp";
 import CustomedOutInc from "../UI/CustomedOutInc";
 import Graph from "../UI/Graph";
 import StaticEmployees from "../UI/StaticEmployees";
-// import StaticEmployees from "../UI/StaticEmployees";
 import StaticIncomes from "../UI/StaticIncomes";
 function Dashboard() {
   return (
