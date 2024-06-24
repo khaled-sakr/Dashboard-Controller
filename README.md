@@ -1,8 +1,24 @@
-# React + Vite
+# Dashboard (Control panel)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project I created it as e dashboard project handle employee ,incomes and some statistics. 
 
-Currently, two official plugins are available:
+## Project Documentation
+- [Demo](https://dashboard-cv.netlify.app/): the demo project in netlify 
+- [Github](https://github.com/khaled-sakr/Dashboard-Controller/): lets see the code.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- List the main features of your dashboard application (e.g., employee management, income tracking, etc.).
+
+## Technologies Used
+- React: Frontend framework for building interactive user interfaces.
+- React Router: Declarative routing for building single-page applications.
+- Redux Toolkit: Opinionated, batteries-included toolset for efficient Redux development.
+- React Hook Form: Lightweight library for building performant and flexible forms.
+- Tailwind CSS: Utility-first CSS framework for rapid styling without writing custom CSS
+
+  ### Screenshots
+  <div>
+<img src='' width='400' heigth='300'>
+<img src=''width='400' heigth='300'>
+<img src=''width='400' heigth='300'>
+</div>
