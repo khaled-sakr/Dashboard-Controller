@@ -34,7 +34,6 @@ function ContextFetchData({ children }) {
       }
     }, []);
   }
-
   function FetchIncomes() {
     useEffect(() => {
       const q = query(collection(db, "incomes"));
