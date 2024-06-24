@@ -18,7 +18,7 @@ This project I created it as e dashboard project handle employee ,incomes and so
 
   ### Screenshots
   <div>
-<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20141927.png' width='400' heigth='300'>
-<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20142235.png' width='400' heigth='300'>
-<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20142257.png' width='400' heigth='300'>
+<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20141927.png' width='600' heigth='400'>
+<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20142235.png' width='600' heigth='400'>
+<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20142257.png' width='600' heigth='400'>
 </div>
