@@ -12,13 +12,13 @@ This project I created it as e dashboard project handle employee ,incomes and so
 ## Technologies Used
 - React: Frontend framework for building interactive user interfaces.
 - React Router: Declarative routing for building single-page applications.
-- Redux Toolkit: Opinionated, batteries-included toolset for efficient Redux development.
+- Firebase: Backend-as-a-Service platform for authentication, database, and storage.
 - React Hook Form: Lightweight library for building performant and flexible forms.
 - Tailwind CSS: Utility-first CSS framework for rapid styling without writing custom CSS
 
   ### Screenshots
   <div>
-<img src='' width='400' heigth='300'>
-<img src=''width='400' heigth='300'>
-<img src=''width='400' heigth='300'>
+<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20141927.png' width='600' heigth='400'>
+<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20142235.png' width='600' heigth='400'>
+<img src='https://github.com/khaled-sakr/Dashboard-Controller/blob/main/public/images/Annotation%202024-06-24%20142257.png' width='600' heigth='400'>
 </div>
