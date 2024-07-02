@@ -7,6 +7,12 @@ function Header() {
         <span className=" flex sm:text-5xl text-2xl my-auto text-sky-900 ">
           <BsFillFileBarGraphFill />
         </span>
+        <a
+          href="https://dashboard-next-cv.netlify.app/"
+          className="text-center sm:text-sm text-[8px] sm:rounded-md rounded-sm my-auto font-semibold text-red-100 bg-sky-800 p-2 border-sky-700"
+        >
+          The same project but by next
+        </a>
         <span className="flex gap-3 justify-end">
           <BiSearchAlt2 className="text-sky-900  m-auto sm:text-6xl text-2xl my-auto" />
           <input

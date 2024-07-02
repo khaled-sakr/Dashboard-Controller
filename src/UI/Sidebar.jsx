@@ -6,7 +6,7 @@ import Button from "./Button";
 function Sidebar() {
   const { pathname } = useLocation();
   return (
-    <div className="md:col-span-2 col-span-3 row-span-1  md:text-xl text-md  text-center pt-6 bg-stone-300 md:w-24  sm:w-20 w-14  ">
+    <div className="md:col-span-2 col-span-3 row-span-1  md:text-xl text-md text-center pt-6 bg-stone-300 md:w-24 sm:w-20 w-14">
       <ul>
         <li>
           <Link to="/">

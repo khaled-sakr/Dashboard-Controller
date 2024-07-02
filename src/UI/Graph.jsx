@@ -14,9 +14,7 @@ function Graph() {
   const { dataInc } = useConFast();
   const { FetchIncomes } = useConData();
   FetchIncomes();
-  const date = dataInc.map((item) =>
-    item.date.replace("-", "").replace("-", "").slice(6, 8)
-  );
+  const date = dataInc.map((item) => item.date.replace("-", "").slice(6, 8));
   const incomes = dataInc
     .map((item) => item.benefit)
     .sort((a, b) => Number(a) - Number(b));

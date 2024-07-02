@@ -3,10 +3,11 @@ import { useConFast } from "../context/ContextProject";
 
 function Filter({ withData, addStyle }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { setPage } = useConFast();
+  const { setPageInc, setPageEmp } = useConFast();
   const filterValue = searchParams.get("filterBy") || "";
   function filterBy(e) {
-    setPage(1);
+    setPageInc(1);
+    setPageEmp(1);
     searchParams.set("filterBy", e.target.value);
     e.target.value === "all" && searchParams.delete("filterBy");
     setSearchParams(searchParams);

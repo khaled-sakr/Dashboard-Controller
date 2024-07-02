@@ -4,10 +4,11 @@ import { useConFast } from "../context/ContextProject";
 function Sort({ withData, addStyle }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get("sortBy");
-  const { setPage } = useConFast();
+  const { setPageInc, setPageEmp } = useConFast();
 
   function handleChange(e) {
-    setPage(1);
+    setPageInc(1);
+    setPageEmp(1);
     searchParams.set("sortBy", e.target.value);
     e.target.value === "normal" && searchParams.delete("sortBy");
     setSearchParams(searchParams);
